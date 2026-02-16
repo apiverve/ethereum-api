@@ -221,8 +221,9 @@ from apiverve_ethereumprice.apiClient import EthereumAPIClient
 
 api = EthereumAPIClient("[YOUR_API_KEY]")
 
+query = { "currency": "USD" }
+
 try:
-    query = { "currency": "USD" }
     result = api.execute(query)
     print(result)
 finally:
