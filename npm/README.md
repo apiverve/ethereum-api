@@ -7,7 +7,7 @@ Ethereum Price is a simple tool for getting the current price of Ethereum. It re
 ![Prod Ready](https://img.shields.io/badge/production-ready-blue)
 [![npm version](https://img.shields.io/npm/v/@apiverve/ethereum.svg)](https://www.npmjs.com/package/@apiverve/ethereum)
 
-This is a Javascript Wrapper for the [Ethereum Price API](https://apiverve.com/marketplace/ethereum?utm_source=npm&utm_medium=readme)
+This is a Javascript Wrapper for the [Ethereum Price API](https://ethereum.apiverve.com?utm_source=npm&utm_medium=readme)
 
 ---
 
@@ -60,7 +60,8 @@ Using the API is simple. All you have to do is make a request. The API will retu
 
 ```javascript
 var query = {
-  currency: "USD"
+  currency: "USD",
+  hourly: false
 };
 
 api.execute(query, function (error, data) {
@@ -80,7 +81,8 @@ You can also use promises to make requests. The API returns a promise that you c
 
 ```javascript
 var query = {
-  currency: "USD"
+  currency: "USD",
+  hourly: false
 };
 
 api.execute(query)
@@ -101,7 +103,8 @@ You can also use async/await to make requests. The API returns a promise that yo
 ```javascript
 async function makeRequest() {
     var query = {
-  currency: "USD"
+  currency: "USD",
+  hourly: false
 };
 
     try {
@@ -127,7 +130,16 @@ async function makeRequest() {
     "marketCap": 323000000000,
     "volume24h": 14850000000,
     "change24h": 2.34,
-    "lastUpdated": "2026-02-07T12:00:00.000Z"
+    "lastUpdated": "2026-02-07T12:00:00.000Z",
+    "high24h": 2742.5,
+    "low24h": 2618.75,
+    "changeDirection": "up",
+    "formatted": {
+      "price": "$2,685.12",
+      "marketCap": "$323.00B",
+      "volume": "$14.85B",
+      "priceWords": "two thousand six hundred eighty-five dollars"
+    }
   }
 }
 ```
