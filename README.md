@@ -187,11 +187,42 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the Ethereum Price API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "currency": "USD",
+    "price": 2685.12,
+    "marketCap": 323000000000,
+    "volume24h": 14850000000,
+    "change24h": 2.34,
+    "lastUpdated": "2026-02-07T12:00:00.000Z",
+    "high24h": 2742.5,
+    "low24h": 2618.75,
+    "changeDirection": "up",
+    "formatted": {
+      "price": "$2,685.12",
+      "marketCap": "$323.00B",
+      "volume": "$14.85B",
+      "priceWords": "two thousand six hundred eighty-five dollars"
+    }
+  }
 }
 ```
 
