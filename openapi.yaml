@@ -2,9 +2,10 @@ openapi: 3.0.4
 info:
   title: Ethereum Price
   description: >-
-    Ethereum Price is a simple tool for getting the current price of Ethereum.
-    It returns the current price, market cap, 24-hour trading volume, and
-    24-hour price change in any currency.
+    Ethereum Price is an Ethereum price feed API that tracks the spot price and
+    movement direction of Ethereum in US dollars. Paid plans add conversion into
+    172 currencies, 24-hour trading volume, market capitalization, and hourly
+    price snapshots.
   termsOfService: https://apiverve.com/terms/
   contact:
     name: APIVerve Support
@@ -19,7 +20,7 @@ servers:
 paths:
   /v1/ethereum:
     get:
-      summary: Get Current Ethereum Price
+      summary: Ethereum Price
       description: >-
         Get the current price of Ethereum. You can optionally specify a
         currency, e.g. USD
@@ -39,6 +40,24 @@ paths:
           required: false
           description: Include hourly price data for the past 24 hours
           example: true
+        - name: hourly[].hour
+          in: query
+          schema:
+            type: number
+          required: false
+          description: UTC hour-of-day slot (0-23) the price was captured in
+        - name: hourly[].price
+          in: query
+          schema:
+            type: number
+          required: false
+          description: Price at that hour, in the requested currency
+        - name: hourly[].timestamp
+          in: query
+          schema:
+            type: string
+          required: false
+          description: ISO 8601 time the hourly price was captured
       responses:
         '200':
           description: Successful Response
