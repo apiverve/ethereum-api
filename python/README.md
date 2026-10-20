@@ -1,13 +1,12 @@
 Ethereum Price API
 ============
 
-Ethereum Price is a simple tool for getting the current price of Ethereum. It returns the current price, market cap, 24-hour trading volume, and 24-hour price change in any currency.
+Ethereum Price is an Ethereum price feed API that tracks the spot price and movement direction of Ethereum in US dollars. Paid plans add conversion into 172 currencies, 24-hour trading volume, market capitalization, and hourly price snapshots.
 
-![Build Status](https://img.shields.io/badge/build-passing-green)
-![Code Climate](https://img.shields.io/badge/maintainability-B-purple)
-![Prod Ready](https://img.shields.io/badge/production-ready-blue)
 
-This is a Python API Wrapper for the [Ethereum Price API](https://apiverve.com/marketplace/ethereum?utm_source=pypi&utm_medium=readme)
+[![PyPI version](https://img.shields.io/pypi/v/apiverve-ethereumprice.svg)](https://pypi.org/project/apiverve-ethereumprice/)
+
+This is a Python wrapper for the [Ethereum Price API](https://apiverve.com/marketplace/ethereum?utm_source=pypi&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -29,8 +28,8 @@ pip3 install apiverve-ethereumprice
 
 ## Configuration
 
-Before using the ethereum API client, you have to setup your account and obtain your API Key.
-You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=pypi&utm_medium=readme)
+Before using the Ethereum Price API client, you have to setup your account and obtain your API Key.
+You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=pypi&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -44,7 +43,13 @@ from apiverve_ethereumprice.apiClient import EthereumAPIClient
 # Initialize the client with your APIVerve API key
 api = EthereumAPIClient("[YOUR_API_KEY]")
 
-query = { "currency": "USD" }
+query = {
+    "currency": "USD",
+    "hourly": true,
+    "hourly[].hour": 0,
+    "hourly[].price": 0,
+    "hourly[].timestamp": ""
+}
 
 try:
     # Make the API call
@@ -60,7 +65,7 @@ except Exception as e:
 
 ## Usage
 
-The Ethereum Price API documentation is found here: [https://docs.apiverve.com/ref/ethereum](https://docs.apiverve.com/ref/ethereum?utm_source=pypi&utm_medium=readme).
+The Ethereum Price API documentation is found here: [https://docs.apiverve.com/ref/ethereum](https://docs.apiverve.com/ref/ethereum?utm_source=pypi&utm_medium=referral&utm_content=readme).
 You can find parameters, example responses, and status codes documented here.
 
 ### Setup
@@ -82,7 +87,13 @@ Using the API client, you can perform requests to the API.
 ###### Define Query
 
 ```python
-query = { "currency": "USD" }
+query = {
+    "currency": "USD",
+    "hourly": true,
+    "hourly[].hour": 0,
+    "hourly[].price": 0,
+    "hourly[].timestamp": ""
+}
 ```
 
 ###### Simple Request
@@ -107,7 +118,16 @@ print(result)
     "marketCap": 323000000000,
     "volume24h": 14850000000,
     "change24h": 2.34,
-    "lastUpdated": "2026-02-07T12:00:00.000Z"
+    "lastUpdated": "2026-02-07T12:00:00.000Z",
+    "high24h": 2742.5,
+    "low24h": 2618.75,
+    "changeDirection": "up",
+    "formatted": {
+      "price": "$2,685.12",
+      "marketCap": "$323.00B",
+      "volume": "$14.85B",
+      "priceWords": "two thousand six hundred eighty-five dollars"
+    }
   }
 }
 ```
@@ -125,7 +145,13 @@ from apiverve_ethereumprice.apiClient import EthereumAPIClient, EthereumAPIClien
 
 api = EthereumAPIClient("[YOUR_API_KEY]")
 
-query = { "currency": "USD" }
+query = {
+    "currency": "USD",
+    "hourly": true,
+    "hourly[].hour": 0,
+    "hourly[].price": 0,
+    "hourly[].timestamp": ""
+}
 
 try:
     result = api.execute(query)
@@ -146,7 +172,13 @@ from apiverve_ethereumprice.apiClient import EthereumAPIClient, EthereumAPIClien
 
 api = EthereumAPIClient("[YOUR_API_KEY]")
 
-query = { "currency": "USD" }
+query = {
+    "currency": "USD",
+    "hourly": true,
+    "hourly[].hour": 0,
+    "hourly[].price": 0,
+    "hourly[].timestamp": ""
+}
 
 try:
     result = api.execute(query)
@@ -180,7 +212,13 @@ The client supports the context manager protocol for automatic resource cleanup:
 ```python
 from apiverve_ethereumprice.apiClient import EthereumAPIClient, EthereumAPIClientError
 
-query = { "currency": "USD" }
+query = {
+    "currency": "USD",
+    "hourly": true,
+    "hourly[].hour": 0,
+    "hourly[].price": 0,
+    "hourly[].timestamp": ""
+}
 
 # Using context manager ensures proper cleanup
 with EthereumAPIClient("[YOUR_API_KEY]") as api:
@@ -206,7 +244,13 @@ from apiverve_ethereumprice.apiClient import EthereumAPIClient
 # Enable debug mode
 api = EthereumAPIClient("[YOUR_API_KEY]", debug=True)
 
-query = { "currency": "USD" }
+query = {
+    "currency": "USD",
+    "hourly": true,
+    "hourly[].hour": 0,
+    "hourly[].price": 0,
+    "hourly[].timestamp": ""
+}
 
 # Debug information will be printed to console
 result = api.execute(query)
@@ -221,7 +265,13 @@ from apiverve_ethereumprice.apiClient import EthereumAPIClient
 
 api = EthereumAPIClient("[YOUR_API_KEY]")
 
-query = { "currency": "USD" }
+query = {
+    "currency": "USD",
+    "hourly": true,
+    "hourly[].hour": 0,
+    "hourly[].price": 0,
+    "hourly[].timestamp": ""
+}
 
 try:
     result = api.execute(query)
@@ -235,7 +285,7 @@ finally:
 
 ## Customer Support
 
-Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=pypi&utm_medium=readme).
+Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=pypi&utm_medium=referral&utm_content=readme).
 
 ---
 
@@ -246,12 +296,12 @@ Stay up to date by following [@apiverveHQ](https://twitter.com/apiverveHQ) on Tw
 
 ## Legal
 
-All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=pypi&utm_medium=readme) and all legal documents and agreements.
+All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=pypi&utm_medium=referral&utm_content=readme) and all legal documents and agreements.
 
 ---
 
 ## License
-Licensed under the The MIT License (MIT)
+Licensed under the MIT License (MIT)
 
 Copyright (&copy;) 2026 APIVerve, and EvlarSoft LLC
 
