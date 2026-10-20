@@ -1,13 +1,12 @@
-EthereumPrice API
+Ethereum Price API
 ============
 
-Ethereum Price is a simple tool for getting the current price of Ethereum. It returns the current price, market cap, 24-hour trading volume, and 24-hour price change in any currency.
+Ethereum Price is an Ethereum price feed API that tracks the spot price and movement direction of Ethereum in US dollars. Paid plans add conversion into 172 currencies, 24-hour trading volume, market capitalization, and hourly price snapshots.
 
-![Build Status](https://img.shields.io/badge/build-passing-green)
-![Code Climate](https://img.shields.io/badge/maintainability-B-purple)
-![Prod Ready](https://img.shields.io/badge/production-ready-blue)
 
-This is a .NET Wrapper for the [EthereumPrice API](https://ethereum.apiverve.com?utm_source=nuget&utm_medium=readme)
+[![NuGet version](https://img.shields.io/nuget/v/APIVerve.API.EthereumPrice.svg)](https://www.nuget.org/packages/APIVerve.API.EthereumPrice)
+
+This is a .NET wrapper for the [Ethereum Price API](https://apiverve.com/marketplace/ethereum?utm_source=nuget&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -40,8 +39,8 @@ From within Visual Studio:
 
 ## Configuration
 
-Before using the ethereum API client, you have to setup your account and obtain your API Key.
-You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=nuget&utm_medium=readme)
+Before using the Ethereum Price API client, you have to setup your account and obtain your API Key.
+You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=nuget&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -61,9 +60,12 @@ class Program
         var apiClient = new EthereumPriceAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new EthereumPriceQueryOptions {
-    Currency = "USD",
-    Hourly = true
-};
+            Currency = "USD",
+            Hourly = true,
+            Hourly[].hour = 0,
+            Hourly[].price = 0,
+            Hourly[].timestamp = ""
+        };
 
         // Make the API call
         try
@@ -93,13 +95,13 @@ class Program
 
 ## Usage
 
-The EthereumPrice API documentation is found here: [https://docs.apiverve.com/ref/ethereum](https://docs.apiverve.com/ref/ethereum?utm_source=nuget&utm_medium=readme).
+The Ethereum Price API documentation is found here: [https://docs.apiverve.com/ref/ethereum](https://docs.apiverve.com/ref/ethereum?utm_source=nuget&utm_medium=referral&utm_content=readme).
 You can find parameters, example responses, and status codes documented here.
 
 ### Setup
 
 ###### Authentication
-EthereumPrice API uses API Key-based authentication. When you create an instance of the API client, you can pass your API Key as a parameter.
+Ethereum Price API uses API Key-based authentication. When you create an instance of the API client, you can pass your API Key as a parameter.
 
 ```csharp
 // Create an instance of the API client
@@ -126,9 +128,12 @@ public class Example
         var apiClient = new EthereumPriceAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new EthereumPriceQueryOptions {
-    Currency = "USD",
-    Hourly = true
-};
+            Currency = "USD",
+            Hourly = true,
+            Hourly[].hour = 0,
+            Hourly[].price = 0,
+            Hourly[].timestamp = ""
+        };
 
         var response = await apiClient.ExecuteAsync(queryOptions);
 
@@ -159,9 +164,12 @@ public class Example
         var apiClient = new EthereumPriceAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new EthereumPriceQueryOptions {
-    Currency = "USD",
-    Hourly = true
-};
+            Currency = "USD",
+            Hourly = true,
+            Hourly[].hour = 0,
+            Hourly[].price = 0,
+            Hourly[].timestamp = ""
+        };
 
         var response = apiClient.Execute(queryOptions);
 
@@ -197,9 +205,12 @@ public class Example
         var apiClient = new EthereumPriceAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new EthereumPriceQueryOptions {
-    Currency = "USD",
-    Hourly = true
-};
+            Currency = "USD",
+            Hourly = true,
+            Hourly[].hour = 0,
+            Hourly[].price = 0,
+            Hourly[].timestamp = ""
+        };
 
         try
         {
@@ -254,9 +265,12 @@ public class Example
         apiClient.SetRetryDelay(2000);     // Wait 2 seconds between retries
 
         var queryOptions = new EthereumPriceQueryOptions {
-    Currency = "USD",
-    Hourly = true
-};
+            Currency = "USD",
+            Hourly = true,
+            Hourly[].hour = 0,
+            Hourly[].price = 0,
+            Hourly[].timestamp = ""
+        };
 
         try
         {
@@ -297,7 +311,10 @@ apiClient.AddCustomHeader("X-Request-ID", Guid.NewGuid().ToString());
 
 var queryOptions = new EthereumPriceQueryOptions {
     Currency = "USD",
-    Hourly = true
+    Hourly = true,
+    Hourly[].hour = 0,
+    Hourly[].price = 0,
+    Hourly[].timestamp = ""
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -324,7 +341,10 @@ apiClient.SetLogger(message =>
 
 var queryOptions = new EthereumPriceQueryOptions {
     Currency = "USD",
-    Hourly = true
+    Hourly = true,
+    Hourly[].hour = 0,
+    Hourly[].price = 0,
+    Hourly[].timestamp = ""
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -343,7 +363,10 @@ apiClient.SetRetryDelay(1500);        // Wait 1.5 seconds between retries (defau
 
 var queryOptions = new EthereumPriceQueryOptions {
     Currency = "USD",
-    Hourly = true
+    Hourly = true,
+    Hourly[].hour = 0,
+    Hourly[].price = 0,
+    Hourly[].timestamp = ""
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -356,7 +379,10 @@ The API client implements `IDisposable` for proper resource cleanup:
 ```csharp
 var queryOptions = new EthereumPriceQueryOptions {
     Currency = "USD",
-    Hourly = true
+    Hourly = true,
+    Hourly[].hour = 0,
+    Hourly[].price = 0,
+    Hourly[].timestamp = ""
 };
 
 using (var apiClient = new EthereumPriceAPIClient("[YOUR_API_KEY]"))
@@ -399,7 +425,7 @@ using (var apiClient = new EthereumPriceAPIClient("[YOUR_API_KEY]"))
 
 ## Customer Support
 
-Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=nuget&utm_medium=readme).
+Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=nuget&utm_medium=referral&utm_content=readme).
 
 ---
 
@@ -410,12 +436,12 @@ Stay up to date by following [@apiverveHQ](https://twitter.com/apiverveHQ) on Tw
 
 ## Legal
 
-All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=nuget&utm_medium=readme) and all legal documents and agreements.
+All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=nuget&utm_medium=referral&utm_content=readme) and all legal documents and agreements.
 
 ---
 
 ## License
-Licensed under the The MIT License (MIT)
+Licensed under the MIT License (MIT)
 
 Copyright (&copy;) 2026 APIVerve, and EvlarSoft LLC
 
