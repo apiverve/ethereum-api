@@ -1,6 +1,6 @@
 # Ethereum Price API - PHP Package
 
-Ethereum Price is a simple tool for getting the current price of Ethereum. It returns the current price, market cap, 24-hour trading volume, and 24-hour price change in any currency.
+Ethereum Price is an Ethereum price feed API that tracks the spot price and movement direction of Ethereum in US dollars. Paid plans add conversion into 172 currencies, 24-hour trading volume, market capitalization, and hourly price snapshots.
 
 ## Installation
 
@@ -29,7 +29,10 @@ $client = new Client('YOUR_API_KEY');
 // Make a request
 $response = $client->execute([
     'currency' => 'USD',
-    'hourly' => true
+    'hourly' => true,
+    'hourly[].hour' => 0,
+    'hourly[].price' => 0,
+    'hourly[].timestamp' => ''
 ]);
 
 // Print the response
@@ -45,7 +48,7 @@ use APIVerve\Ethereum\Exceptions\APIException;
 use APIVerve\Ethereum\Exceptions\ValidationException;
 
 try {
-    $response = $client->execute(['currency' => 'USD', 'hourly' => true]);
+    $response = $client->execute(['currency' => 'USD', 'hourly' => true, 'hourly[].hour' => 0, 'hourly[].price' => 0, 'hourly[].timestamp' => '']);
     print_r($response['data']);
 } catch (ValidationException $e) {
     echo "Validation error: " . implode(', ', $e->getErrors());
@@ -98,11 +101,11 @@ $client = new Client(
 
 ## Documentation
 
-For more information, visit the [API Documentation](https://docs.apiverve.com/ref/ethereum?utm_source=packagist&utm_medium=readme).
+For more information, visit the [API Documentation](https://docs.apiverve.com/ref/ethereum?utm_source=packagist&utm_medium=referral&utm_content=readme).
 
 ## Support
 
-- Website: [https://ethereum.apiverve.com?utm_source=php&utm_medium=readme](https://ethereum.apiverve.com?utm_source=php&utm_medium=readme)
+- Website: [https://apiverve.com/marketplace/ethereum?utm_source=php&utm_medium=referral&utm_content=readme](https://apiverve.com/marketplace/ethereum?utm_source=php&utm_medium=referral&utm_content=readme)
 - Email: hello@apiverve.com
 
 ## License
