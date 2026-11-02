@@ -32,9 +32,6 @@ namespace APIVerve.API.EthereumPrice
 
     public partial class Data
     {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
         [JsonProperty("price")]
         public double? Price { get; set; }
 
@@ -47,6 +44,9 @@ namespace APIVerve.API.EthereumPrice
         [JsonProperty("change24h")]
         public double? Change24H { get; set; }
 
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
         [JsonProperty("lastUpdated")]
         public DateTimeOffset? LastUpdated { get; set; }
 
@@ -56,11 +56,86 @@ namespace APIVerve.API.EthereumPrice
         [JsonProperty("low24h")]
         public double? Low24H { get; set; }
 
+        [JsonProperty("changeAmount24h")]
+        public double? ChangeAmount24H { get; set; }
+
+        [JsonProperty("change1h")]
+        public double? Change1H { get; set; }
+
+        [JsonProperty("change7d")]
+        public double? Change7D { get; set; }
+
+        [JsonProperty("change30d")]
+        public double? Change30D { get; set; }
+
+        [JsonProperty("change1y")]
+        public double? Change1Y { get; set; }
+
+        [JsonProperty("marketCapRank")]
+        public long? MarketCapRank { get; set; }
+
+        [JsonProperty("circulatingSupply")]
+        public long? CirculatingSupply { get; set; }
+
+        [JsonProperty("totalSupply")]
+        public long? TotalSupply { get; set; }
+
+        [JsonProperty("maxSupply")]
+        public object MaxSupply { get; set; }
+
+        [JsonProperty("fullyDilutedValuation")]
+        public long? FullyDilutedValuation { get; set; }
+
+        [JsonProperty("allTimeHigh")]
+        public double? AllTimeHigh { get; set; }
+
+        [JsonProperty("allTimeHighDate")]
+        public DateTimeOffset? AllTimeHighDate { get; set; }
+
+        [JsonProperty("percentFromAllTimeHigh")]
+        public double? PercentFromAllTimeHigh { get; set; }
+
+        [JsonProperty("allTimeLow")]
+        public double? AllTimeLow { get; set; }
+
+        [JsonProperty("allTimeLowDate")]
+        public DateTimeOffset? AllTimeLowDate { get; set; }
+
+        [JsonProperty("high30d")]
+        public double? High30D { get; set; }
+
+        [JsonProperty("low30d")]
+        public double? Low30D { get; set; }
+
+        [JsonProperty("average30d")]
+        public double? Average30D { get; set; }
+
+        [JsonProperty("volatility30d")]
+        public double? Volatility30D { get; set; }
+
+        [JsonProperty("daily")]
+        public Daily[] Daily { get; set; }
+
         [JsonProperty("changeDirection")]
         public string ChangeDirection { get; set; }
 
         [JsonProperty("formatted")]
         public Formatted Formatted { get; set; }
+    }
+
+    public partial class Daily
+    {
+        [JsonProperty("date")]
+        public DateTimeOffset? Date { get; set; }
+
+        [JsonProperty("price")]
+        public double? Price { get; set; }
+
+        [JsonProperty("marketCap")]
+        public double? MarketCap { get; set; }
+
+        [JsonProperty("volume24h")]
+        public double? Volume24H { get; set; }
     }
 
     public partial class Formatted
