@@ -1,10 +1,10 @@
 [project]
 name = "apiverve-ethereumprice"
-version = "1.2.2"
+version = "1.2.5"
 authors = [
   { name="APIVerve", email="hello@apiverve.com" },
 ]
-description = "Ethereum Price is an Ethereum price feed API that tracks the spot price and movement direction of Ethereum in US dollars. Paid plans add conversion into 172 currencies, 24-hour trading volume, market capitalization, and hourly price snapshots."
+description = "Ethereum Price is an Ethereum price feed API that tracks the spot price and movement direction of Ethereum in US dollars. Paid plans add 172 currencies, market cap, 24-hour volume, supply, all-time highs, 1-hour to 1-year changes, 30-day stats, and hourly and 30-day daily history."
 keywords = ["ethereum price api", "ethereum api", "eth price api", "ethereum price feed api", "eth api"]
 readme = "README.md"
 requires-python = ">=3.9"
